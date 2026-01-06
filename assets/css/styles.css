@@ -1,11 +1,32 @@
 *{box-sizing:border-box;margin:0;padding:0}
 body{
   font-family:"Poppins",sans-serif;
-  background:radial-gradient(circle at 30% 20%,#3a4b78,#0a0b18 60%);
+  background:none;
   color:#fff;
   min-height:100vh;
   display:flex;
   flex-direction:column;
+  position:relative;
+}
+
+/* Fondo degradado animado (capa separada para animar sin afectar contenido) */
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  z-index:-1;
+  pointer-events:none;
+  background:radial-gradient(circle at 30% 20%, #3a4b78 0%, #0a0b18 60%);
+  background-size:200% 200%;
+  animation:bg-move 12s ease-in-out infinite;
+}
+
+@keyframes bg-move{
+  0%{background-position:30% 20%;}
+  25%{background-position:70% 30%;}
+  50%{background-position:50% 70%;}
+  75%{background-position:10% 50%;}
+  100%{background-position:30% 20%;}
 }
 
 .container{
