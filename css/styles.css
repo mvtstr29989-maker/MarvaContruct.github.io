@@ -1,0 +1,364 @@
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  font-family:"Poppins",sans-serif;
+  background:none;
+  color:#fff;
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  position:relative;
+}
+
+/* Fondo degradado animado (capa separada para animar sin afectar contenido) */
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  z-index:-1;
+  pointer-events:none;
+  background:radial-gradient(circle at 30% 20%, #ff0000 0%, #0a0b18 60%);
+  background-size:200% 200%;
+  animation:bg-move 12s ease-in-out infinite;
+}
+
+@keyframes bg-move{
+  0%{background-position:30% 20%;}
+  25%{background-position:70% 30%;}
+  50%{background-position:50% 70%;}
+  75%{background-position:10% 50%;}
+  100%{background-position:30% 20%;}
+}
+
+.container{
+  max-width:1100px;
+  margin:auto;
+  padding:1rem 2rem;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.navbar{
+  background:transparent;
+}
+/*.navbar .logo{
+  font-weight:800;
+  letter-spacing:.5px;
+}*/
+.logo img{
+  width: 150px;
+  height:auto;
+  display:block;
+}
+.navbar nav a{
+  margin-left:1.25rem;
+  text-decoration:none;
+  color:#d9d9e6;
+  font-weight:500;
+}
+.navbar nav a:hover{color:#fff}
+
+.hero{
+  flex:1;
+  display:grid;
+  grid-template-columns:1.1fr .9fr;
+  align-items:center;
+  gap:2rem;
+  max-width:1200px;
+  margin:auto;
+  padding:2rem;
+  box-sizing:border-box;
+}
+
+.hero-content h1{
+  font-size:2.8rem;
+  font-weight:800;
+}
+.hero-content h1 span{
+  color:#ffa23b;
+}
+.hero-content p{
+  margin:1rem 0 1.5rem;
+  color:#d1d1e3;
+  line-height:1.5;
+}
+
+/* Barra de progreso (responsiva) */
+.progress{
+  width:100%;
+  max-width:260px;
+  height:12px;
+  border-radius:12px;
+  background:#2a2a3d;
+  overflow:hidden;
+  margin:1rem 0 1.8rem;
+}
+.progress .bar{
+  width:40%;
+  height:100%;
+  background:linear-gradient(90deg,#ffa23b,#ff6a3d);
+  border-radius:12px;
+  animation:load 2s infinite;
+}
+@keyframes load{
+  0%{transform:translateX(-100%)}
+  100%{transform:translateX(250%)}
+}
+
+/* Social simple y responsiva */
+.social{
+  margin-top:1.2rem;
+  color:#d1d1e3;
+  display:flex;
+  align-items:center;
+  justify-content:flex-start;
+  gap:.6rem;
+  font-weight:600;
+}
+
+/* Imagen ilustrativa */
+.hero-illustration img{
+  width:100%;
+  max-width:520px;
+  display:block;
+  filter:drop-shadow(0 10px 25px rgba(0,0,0,.45));
+}
+
+/* Evitar desbordes y asegurar ajuste en móvil para hero */
+.hero,
+.hero *{
+  overflow-wrap:anywhere;
+  word-break:break-word;
+}
+
+.hero-illustration img{
+  max-width:100%;
+  height:auto;
+  object-fit:contain;
+}
+
+/* Responsive */
+@media(max-width:900px){
+  .hero{
+    grid-template-columns:1fr;
+    text-align:center;
+    padding:1rem;
+  }
+  .hero-illustration img{
+    margin:0 auto;
+    max-width:420px;
+    width:90%;
+  }
+  .progress{
+    max-width:520px;
+    margin:0 auto 1.2rem;
+  }
+  .social{
+    justify-content:center;
+    font-size:0.95rem;
+  }
+}
+
+/* Footer transparente */
+.site-footer{
+  background:transparent;
+  border-top:1px solid rgba(255,255,255,0.06);
+  padding:1rem 0;
+  color:#d1d1e3;
+}
+.footer-inner{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+.footer-left{
+  display:flex;
+  align-items:center;
+  gap:.75rem;
+}
+.footer-logo img{
+  width:40px;
+  height:auto;
+  display:block;
+}
+.footer-text{
+  font-size:0.9rem;
+  opacity:0.95;
+}
+
+@media(max-width:900px){
+  .footer-inner{flex-direction:column;gap:.5rem;text-align:center}
+  .footer-left{justify-content:center}
+}
+
+/* ==================== PRIVACY PAGE STYLES ==================== */
+.privacy-content{
+  flex:1;
+  padding:2rem 0;
+}
+
+.privacy-content .container{
+  display:block;
+  width:100%;
+  max-width:1100px;
+  margin:0 auto;
+  box-sizing:border-box;
+  padding:1.25rem;
+}
+
+.privacy-header{
+  text-align:center;
+  margin-bottom:3rem;
+  padding-bottom:2rem;
+  border-bottom:2px solid rgba(255, 160, 59, 0.3);
+}
+
+.privacy-header h1{
+  font-size:2.2rem;
+  font-weight:800;
+  color:#fff;
+  margin-bottom:0.5rem;
+  background: linear-gradient(135deg, #ffa23b, #ff6a3d);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.privacy-section{
+  margin-bottom:2.5rem;
+  padding:1.5rem;
+  border-left:4px solid #ffa23b;
+  background:rgba(255, 160, 59, 0.05);
+  border-radius:0.5rem;
+  transition: all 0.3s ease;
+}
+
+.privacy-section:hover{
+  background:rgba(255, 160, 59, 0.1);
+  transform: translateX(5px);
+}
+
+.privacy-section h2{
+  font-size:1.5rem;
+  font-weight:700;
+  color:#ffa23b;
+  margin-bottom:1rem;
+  margin-top:0;
+}
+
+.privacy-section h3{
+  font-size:1.15rem;
+  font-weight:600;
+  color:#fff;
+  margin-top:1.5rem;
+  margin-bottom:0.75rem;
+}
+
+.privacy-section p{
+  color:#d1d1e3;
+  line-height:1.8;
+  margin-bottom:1rem;
+  font-size:0.95rem;
+}
+
+/* Evitar desbordes por palabras largas en móviles */
+.privacy-content,
+.privacy-section,
+.privacy-section p,
+.privacy-list li,
+.consent-checkbox span{
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+.privacy-section a{
+  color:#ffa23b;
+  text-decoration:none;
+  transition: color 0.3s ease;
+}
+
+.privacy-section a:hover{
+  color:#ff6a3d;
+  text-decoration:underline;
+}
+
+.privacy-list{
+  list-style:none;
+  padding-left:0;
+  margin:1rem 0;
+}
+
+.privacy-list li{
+  color:#d1d1e3;
+  padding:0.5rem 0 0.5rem 2rem;
+  position:relative;
+  line-height:1.6;
+  font-size:0.95rem;
+}
+
+.privacy-list li:before{
+  content:"▶";
+  position:absolute;
+  left:0;
+  color:#ffa23b;
+  font-weight:bold;
+}
+
+.privacy-consent{
+  margin:1.5rem 0;
+  padding:1.5rem;
+  background:rgba(255, 106, 61, 0.1);
+  border:1px solid rgba(255, 160, 59, 0.3);
+  border-radius:0.5rem;
+}
+
+.consent-checkbox{
+  display:flex;
+  align-items:flex-start;
+  cursor:pointer;
+  color:#d1d1e3;
+  gap:0.75rem;
+  font-size:0.95rem;
+  line-height:1.6;
+}
+
+.consent-checkbox input[type="checkbox"]{
+  width:20px;
+  height:20px;
+  margin-top:0.3rem;
+  cursor:pointer;
+  accent-color:#ffa23b;
+  flex-shrink:0;
+}
+
+.consent-checkbox input[type="checkbox"]:hover{
+  filter:brightness(1.2);
+}
+
+/* Responsive para Privacy */
+@media(max-width:900px){
+  .privacy-header h1{
+    font-size:1.8rem;
+  }
+  
+  .privacy-section{
+    padding:0.9rem;
+    margin-bottom:1.25rem;
+    border-left-width:3px;
+  }
+  
+  .privacy-section h2{
+    font-size:1.2rem;
+  }
+  
+  .privacy-section h3{
+    font-size:1rem;
+  }
+  
+  .privacy-list li{
+    padding:0.35rem 0 0.35rem 1.25rem;
+    font-size:0.9rem;
+  }
+  
+  .privacy-content .container{padding:0.75rem}
+}
