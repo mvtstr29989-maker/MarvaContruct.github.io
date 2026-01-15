@@ -46,7 +46,7 @@ body::before{
   letter-spacing:.5px;
 }*/
 .logo img{
-  width:70px;
+  width: 150px;
   height:auto;
   display:block;
 }
